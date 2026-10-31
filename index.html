@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shirwac - Social Media</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#f0f2f5;font-family:Arial,sans-serif;color:#222}
+header{background:#1877f2;color:white;padding:16px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0}
+header h2{margin:0}
+nav{display:flex;justify-content:space-around;background:white;padding:14px;position:sticky;top:54px}
+nav a{color:#1877f2;text-decoration:none;font-weight:bold}
+.container{max-width:600px;margin:20px auto;padding:10px}
+.card{background:white;border-radius:12px;padding:16px;margin-bottom:15px;box-shadow:0 2px 8px #ddd}
+.profile{display:flex;align-items:center;gap:10px}
+.avatar{background:#1877f2;color:white;border-radius:50%;width:42px;height:42px;display:grid;place-items:center;font-weight:bold}
+input{width:100%;padding:13px;border:1px solid #ddd;border-radius:20px;margin-top:12px}
+button{border:0;background:#1877f2;color:white;padding:10px 16px;border-radius:20px;cursor:pointer;margin-top:10px}
+.post-image{width:100%;border-radius:10px;margin-top:12px}
+.actions{display:flex;justify-content:space-around;margin-top:12px}
+.actions button{background:#f0f2f5;color:#1877f2}
+footer{text-align:center;padding:20px;color:#777}
+</style>
+</head>
+<body>
+
+<header>
+<h2>🌐 Shirwac</h2>
+<span>🔔 ✉️</span>
+</header>
+
+<nav>
+<a href="#">🏠 Home</a>
+<a href="#create">➕ Create</a>
+<a href="#profile">👤 Profile</a>
+</nav>
+
+<div class="container">
+
+<div class="card">
+<h3>Ku soo dhowow Shirwac! ❤️</h3>
+<p>La wadaag asxaabtaada fikirkaaga iyo sawirradaada.</p>
+</div>
+
+<div class="card" id="create">
+<h3>Create a Post</h3>
+<input id="postText" placeholder="Maxaa cusub maanta?">
+<button onclick="addPost()">Share Post</button>
+</div>
+
+<div id="posts">
+<div class="card">
+<div class="profile">
+<div class="avatar">S</div>
+<strong>Shirwac Official</strong>
+</div>
+<p>Ku soo dhowaada dhammaan isticmaalayaasha Shirwac! 🎉</p>
+<div class="actions">
+<button onclick="like(this)">❤️ Like 0</button>
+<button onclick="comment()">💬 Comment</button>
+</div>
+</div>
+</div>
+
+<div class="card" id="profile">
+<h3>👤 My Profile</h3>
+<p>Magaca: Shirwac User</p>
+<p>Welcome to your social community!</p>
+</div>
+
+</div>
+
+<footer>© 2026 Shirwac Social Media</footer>
+
+<script>
+function addPost(){
+let input=document.getElementById("postText");
+if(!input.value.trim())return;
+let card=document.createElement("div");
+card.className="card";
+card.innerHTML='<div class="profile"><div class="avatar">S</div><strong>Shirwac User</strong></div><p></p><div class="actions"><button onclick="like(this)">❤️ Like 0</button><button onclick="comment()">💬 Comment</button></div>';
+card.querySelector("p").textContent=input.value;
+document.getElementById("posts").prepend(card);
+input.value="";
+}
+function like(btn){
+let n=Number(btn.textContent.match(/\d+/)[0]);
+btn.textContent="❤️ Like "+(n+1);
+}
+function comment(){
+let c=prompt("Qor faalladaada:");
+if(c)alert("Faalladaada: "+c);
+}
+</script>
+</body>
+  </html>
+  
